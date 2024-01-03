@@ -1,0 +1,282 @@
+\documentclass{article}
+% \usepackage{tgbonum}
+
+%% PACKAGES
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=.75in, top=.5in, bottom=.5in]{geometry}
+
+% large comments
+\usepackage{comment}
+
+% customizable enumerate
+\usepackage{enumitem}
+
+% icons
+\usepackage{fontawesome5}
+
+% bibliography
+\usepackage{bibentry}
+
+% times roman font
+% \usepackage{times}
+
+
+
+
+%% NEW COMMANDS
+\newcommand{\dividor}{\quad$\vert$\quad}
+\newcommand{\subsubsectiontext}[1]{
+    \hspace*{.5cm}%
+    \begin{minipage}{.9\textwidth}%
+    #1
+    \end{minipage}%
+}
+
+
+
+
+%% SETTINGS AND SUBSTITUTIONS
+\titleformat{\section}
+{\large \bfseries \uppercase}
+{}
+{0em}
+{}[\titlerule]
+
+\titleformat{\subsection}[runin]
+{\bfseries}
+{}
+{0em}
+{}
+
+\titleformat{\subsubsection}[runin]
+{}
+{}
+{0em}
+{}
+
+\titlespacing{\section}{0em}{1em}{0.5em}
+\titlespacing{\subsection}{0em}{.5em}{.25em}
+\titlespacing{\subsubsection}{0em}{0em}{0em}
+
+% no page numbers
+\pagestyle{empty}
+
+
+
+
+
+
+
+
+%% RENEW COMMANDS
+\renewcommand{\familydefault}{\sfdefault}
+
+% title
+\renewcommand{\maketitle}{
+\begin{center}
+{\Huge\bfseries\theauthor}
+\vspace{1em}  
+
+\faIcon{envelope}\hspace{} aidencullo@gmail.com\dividor 
+\faIcon{globe}\hspace{} aidencullo.com\dividor 
+\faIcon{github}\hspace{} aidencullo\dividor
+\faIcon{linkedin}\hspace{} aidencullo\dividor
+\mobile\hspace{} 845-320-0566
+
+\end{center}
+}
+
+% prettier C++ representation
+\def\Cplusplus{C\raisebox{0.5ex}{\tiny\textbf{++}}}
+
+
+
+
+
+
+
+% TITLE
+
+\title{test project}
+\author{Aiden Cullo}
+\date{October 2022}
+
+
+
+
+
+
+
+
+%% DEFINITIONS
+
+\def\mobile{\leavevmode\hbox to7bp{\kern1bp \lower1bp\vbox to12bp{}%
+    \pdfliteral{q 0 g 0 G 1 j 2 w 0 0 5 10 re B
+       1 g 1 G 1 w .3 1.8 4.4 7 re B 
+       1.5 w 2.5 .2 0 .1 re B .3 w 1.7 10 1.6 0 re B Q}%
+    \hss}}
+
+% DOCUMENT
+
+
+%% HEADER
+
+\begin{document}
+% \fontfamily{qcr}\selectfont
+
+
+
+
+
+%% HEADER
+\maketitle
+
+
+
+
+
+
+%% EDUCATION
+
+\section{education}
+
+\subsection{SUNY Binghamton} \hfill \textbf{Class of 2020}\\
+\textbf{BS Math} $\vert$ \textbf{BS Physics} $\vert$ \textbf{BS Computer Science} | \textbf{GPA:} 3.85/4\hfill Binghamton, NY\\
+Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
+
+
+
+
+
+
+
+%% EXPERIENCE
+
+\section{experience}
+
+\subsection{Herogrow} \hfill \textbf{Apr 2023 - Present}
+
+\subsubsection{Software Developer} \hfill \textit{Chicago, IL}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+      \item Designed \textbf{RESTful API} infrastructure and internal/external server endpoints with \textbf{Ruby on Rails}.
+      \item Optimized web controller content delivery 4-fold by integrating turbo frames into resource pipeline.
+      \item Reduced database query time 25\% by refactoring \textbf{PostgreSQL} schema to streamline common actions. 
+    \end{enumerate}
+}
+
+\subsection{Tradigro} \hfill \textbf{Dec 2022 - Apr 2023}
+
+\subsubsection{Software Developer} \hfill \textit{Chicago, IL}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Modularized \textbf{Vue.js} sharing UI for journals, trades, and achievements, reducing average feed traffic by 70\%.
+        \item Standardized social media post view across platforms, eliminating incorrect media conversions and formatting.
+        \item Devised asynchronous locking algorithm for \textbf{Node.js} server to avoid race conditions on batch trade uploads.
+    \end{enumerate}
+}
+
+\subsection{Supercerebro} \hfill \textbf{Aug 2022 - Dec 2022}
+
+\subsubsection{Software Developer} \hfill \textit{Bogot\'a, Colombia}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Developed a puzzle strategy game for a 10,000-person customer base across Latin America and Europe.
+        \item Constructed a multi-platform progressive web app via the \textbf{Ionic} framework and \textbf{React.js} full stack model.
+        \item Implemented backend services through \textbf{Google Firebase} in order to store credentials, preferences, and history.
+    \end{enumerate}
+}
+
+\subsection{SUNY Binghamton} \hfill \textbf{Aug 2018---Nov 2020}
+
+\subsubsection{Research Assistant} \hfill \textit{Binghamton, NY}
+\subsubsectiontext{
+\begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+    \item Employed an evolutionary search algorithm for stable-alloy nanocrystal structures using \textbf{C} and \textbf{openMP}. 
+    \item Helped parallelize \textbf{MAISE} software package for use by the research group and computational physics community.
+\end{enumerate}
+}
+
+\subsection{California Institute of Technology} \hfill \textbf{Jun 2019---Aug 2019}
+
+\subsubsection{SURF Research Fellow} \hfill \textit{Pasadena, CA}
+\subsubsectiontext{
+\begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+    \item Performed scanning tunneling microscopy/spectroscopy of topological defects in semiconductor surface state.
+    \item  Cross-examined results of pure and Cr-doped $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulators.
+\end{enumerate}
+}
+\subsection{Sapienza University of Rome} \hfill \textbf{Jun 2018---Aug 2018}
+
+\subsubsection{Research Assistant} \hfill \textit{Rome, Italy}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Constructed a 3-layer convolutional neural network in \textbf{Python} to classify particle collisions with 97.5\% accuracy.
+        \item Generated 15k training samples based on physical and mathematical models of subatomic particle interactions.
+    \end{enumerate}
+}
+
+    
+\subsection{National Aeronautics and Space Administration (NASA)} \hfill \textbf{Jun 2017---Aug 2017}
+
+\subsubsection{Software Engineer Intern} \hfill \textit{Mountain View, CA}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Built a library in \textbf{\Cplusplus} and \textbf{MATLAB} to interpret 1000+ battery metadata indicators.
+        \item Incorporated varying degrees of uncertainty and loss for autonomous, mission-critical drone fleets of up to 100.
+    \end{enumerate}
+}
+
+
+
+
+
+
+%% PUBLICATIONS
+\nobibliography{ref}
+\bibliographystyle{unsrt}
+
+\section{Publications}
+\begin{enumerate}
+    \item \bibentry{C9CP00837C}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+%% SKILLS
+
+\section{skills}
+
+\noindent
+\textbf{Programming Languages:} Python, TypeScript, \Cplusplus, C, Java, Ruby, SQL, Bash \\
+\textbf{Frameworks:} React.js, Vue.js, Angular, Node.js, Ruby on Rails, MongoDB, GCP
+% \textbf{Languages:} English (\textit{native}), Spanish (\textit{fluent}), French (\textit{prof.}), Portuguese (\textit{elem.})
+
+
+
+
+
+
+%% VOLUNTEER 
+
+\section{volunteering}
+
+\subsection{Annunciation House} \hfill \textbf{Mar 2022---Jun 2022}
+
+\subsubsection{Shift Coordinator} \hfill \textit{El Paso, TX}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Helped refugees detained by border patrol reconnect with their families and contact their domestic sponsors.
+        % \item Facilitated safe travel to host cities and attendance of mandated court appearances for 2,000+ refugees.
+    \end{enumerate}
+}
+
+\end{document}
