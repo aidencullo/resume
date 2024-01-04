@@ -1,11 +1,17 @@
 \documentclass{article}
-% \usepackage{tgbonum}
+
+
+
+
+
+
+
 
 %% PACKAGES
 \usepackage[utf8]{inputenc}
 \usepackage{titlesec}
 \usepackage{titling}
-\usepackage[margin=.75in, top=.5in, bottom=.5in]{geometry}
+\usepackage[margin=.5in, top=.35in, bottom=.35in]{geometry}
 
 % large comments
 \usepackage{comment}
@@ -19,8 +25,16 @@
 % bibliography
 \usepackage{bibentry}
 
-% times roman font
-% \usepackage{times}
+% hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+
 
 
 
@@ -57,7 +71,7 @@
 {}
 
 \titlespacing{\section}{0em}{1em}{0.5em}
-\titlespacing{\subsection}{0em}{.5em}{.25em}
+\titlespacing{\subsection}{0em}{0.5em}{0.25em}
 \titlespacing{\subsubsection}{0em}{0em}{0em}
 
 % no page numbers
@@ -124,9 +138,13 @@
 %% HEADER
 
 \begin{document}
-% \fontfamily{qcr}\selectfont
 
 
+
+
+
+
+%% testing area
 
 
 
@@ -143,8 +161,8 @@
 \section{education}
 
 \subsection{SUNY Binghamton} \hfill \textbf{Class of 2020}\\
-\textbf{BS Math} $\vert$ \textbf{BS Physics} $\vert$ \textbf{BS Computer Science} | \textbf{GPA:} 3.85/4\hfill Binghamton, NY\\
-Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
+\textbf{B.S. Math} $\vert$ \textbf{B.S. Physics} $\vert$ \textbf{B.S. Computer Science} | GPA: 3.85/4\hfill Binghamton, NY\\
+Honors: \textit{summa cum laude}, Upsilon Pi Epsilon
 
 
 
@@ -156,9 +174,7 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
 
 \section{experience}
 
-\subsection{Herogrow} \hfill \textbf{Apr 2023 - Present}
-
-\subsubsection{Software Developer} \hfill \textit{Chicago, IL}
+\subsection{Software Developer} \hfill \textbf{Herogrow} \hfill \textbf{Apr 2023---Present}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
       \item Designed \textbf{RESTful API} infrastructure and internal/external server endpoints with \textbf{Ruby on Rails}.
@@ -167,50 +183,44 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
     \end{enumerate}
 }
 
-\subsection{Tradigro} \hfill \textbf{Dec 2022 - Apr 2023}
-
-\subsubsection{Software Developer} \hfill \textit{Chicago, IL}
+\subsection{Software Developer} \hfill \textbf{Tradigro} \hfill \textbf{Dec 2022---Apr 2023}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
         \item Modularized \textbf{Vue.js} sharing UI for journals, trades, and achievements, reducing average feed traffic by 70\%.
-        \item Standardized social media post view across platforms, eliminating incorrect media conversions and formatting.
-        \item Devised asynchronous locking algorithm for \textbf{Node.js} server to avoid race conditions on batch trade uploads.
+        \item Standardized social media post view across platforms, eliminating \(\sim \)5 incorrect media conversions per profile.
+        \item Devised asynchronous locking algorithm for \textbf{Node.js} server to avoid race condition on 1k batch trade uploads.
     \end{enumerate}
 }
 
-\subsection{Supercerebro} \hfill \textbf{Aug 2022 - Dec 2022}
-
-\subsubsection{Software Developer} \hfill \textit{Bogot\'a, Colombia}
+\subsection{Software Developer} \hfill \textbf{Supercerebro} \hfill \textbf{Aug 2022---Dec 2022}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
         \item Developed a puzzle strategy game for a 10,000-person customer base across Latin America and Europe.
         \item Constructed a multi-platform progressive web app via the \textbf{Ionic} framework and \textbf{React.js} full stack model.
-        \item Implemented backend services through \textbf{Google Firebase} in order to store credentials, preferences, and history.
+        \item Implemented DBMS through \textbf{Google Firebase} to store 1TB of credentials, preferences, and history user data.
     \end{enumerate}
 }
 
-\subsection{SUNY Binghamton} \hfill \textbf{Aug 2018---Nov 2020}
 
-\subsubsection{Research Assistant} \hfill \textit{Binghamton, NY}
+\subsection{Research Assistant} \hfill \textbf{SUNY Binghamton} \hfill \textbf{Aug 2018---Nov 2020}
 \subsubsectiontext{
 \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-    \item Employed an evolutionary search algorithm for stable-alloy nanocrystal structures using \textbf{C} and \textbf{openMP}. 
-    \item Helped parallelize \textbf{MAISE} software package for use by the research group and computational physics community.
+    \item Tuned evolutionary search for nanocrystal alloy structures in \textbf{C} to consistently obtain stabler ground states. 
+    \item Achieved 50\% speed-up of open-source \href{https://maise.binghamton.edu/}{\textbf{MAISE}} neural network library via parallelization with \textbf{openMP} toolkit.
 \end{enumerate}
 }
 
-\subsection{California Institute of Technology} \hfill \textbf{Jun 2019---Aug 2019}
 
-\subsubsection{SURF Research Fellow} \hfill \textit{Pasadena, CA}
+\subsection{Research Fellow} \hfill \textbf{California Institute of Technology (Caltech)} \hfill \textbf{Jun 2019---Aug 2019}
 \subsubsectiontext{
 \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-    \item Performed scanning tunneling microscopy/spectroscopy of topological defects in semiconductor surface state.
-    \item  Cross-examined results of pure and Cr-doped $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulators.
+    \item Performed scanning tunneling microscopy (STM) of topological defects in semiconductor surface states.
+    \item  Cross-examined results of pure and Cr-doped $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulator substrates.
 \end{enumerate}
 }
-\subsection{Sapienza University of Rome} \hfill \textbf{Jun 2018---Aug 2018}
 
-\subsubsection{Research Assistant} \hfill \textit{Rome, Italy}
+
+\subsection{Research Intern} \hfill \textbf{Sapienza University of Rome} \hfill \textbf{Jun 2018---Aug 2018}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
         \item Constructed a 3-layer convolutional neural network in \textbf{Python} to classify particle collisions with 97.5\% accuracy.
@@ -218,14 +228,13 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
     \end{enumerate}
 }
 
-    
-\subsection{National Aeronautics and Space Administration (NASA)} \hfill \textbf{Jun 2017---Aug 2017}
 
-\subsubsection{Software Engineer Intern} \hfill \textit{Mountain View, CA}
+
+\subsection{Software Intern} \hfill \textbf{National Aeronautics and Space Administration (NASA)} \hfill \textbf{Jun 2017---Aug 2017}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Built a library in \textbf{\Cplusplus} and \textbf{MATLAB} to interpret 1000+ battery metadata indicators.
-        \item Incorporated varying degrees of uncertainty and loss for autonomous, mission-critical drone fleets of up to 100.
+        \item Built a library in \textbf{\Cplusplus} and \textbf{MATLAB} to interpret biases and patterns from 1000+ battery metadata indicators.
+        \item Incorporated uncertainty and loss information into mission-critical decisions for autonomous drone fleets of 100+.
     \end{enumerate}
 }
 
@@ -234,14 +243,7 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
 
 
 
-%% PUBLICATIONS
-\nobibliography{ref}
-\bibliographystyle{unsrt}
 
-\section{Publications}
-\begin{enumerate}
-    \item \bibentry{C9CP00837C}
-\end{enumerate}
 
 
 
@@ -256,9 +258,10 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
 \section{skills}
 
 \noindent
-\textbf{Programming Languages:} Python, TypeScript, \Cplusplus, C, Java, Ruby, SQL, Bash \\
-\textbf{Frameworks:} React.js, Vue.js, Angular, Node.js, Ruby on Rails, MongoDB, GCP
-% \textbf{Languages:} English (\textit{native}), Spanish (\textit{fluent}), French (\textit{prof.}), Portuguese (\textit{elem.})
+\textbf{Programming Languages:} Python, JavaScript, TypeScript, \Cplusplus, C, Java, Ruby, SQL, PHP \\
+\textbf{Frameworks:} React.js, Vue.js, Angular, Node.js, Ruby on Rails, MongoDB, GCP \\
+\textbf{Tools:} macOS, Windows, Linux/Unix, Docker, Git, Emacs, VS Code, IntelliJ, Numpy, Pytorch \\
+\textbf{Spoken Languages:} English (\textit{native}), Spanish (\textit{fluent}), French (\textit{prof.}), Portuguese (\textit{elem.})
 
 
 
@@ -269,14 +272,42 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon, dean's list
 
 \section{volunteering}
 
-\subsection{Annunciation House} \hfill \textbf{Mar 2022---Jun 2022}
-
-\subsubsection{Shift Coordinator} \hfill \textit{El Paso, TX}
+\subsection{Coordinator} \hfill \textbf{Annunciation House} \hfill \textbf{Mar 2022---Jun 2022}
 \subsubsectiontext{
     \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Helped refugees detained by border patrol reconnect with their families and contact their domestic sponsors.
-        % \item Facilitated safe travel to host cities and attendance of mandated court appearances for 2,000+ refugees.
+        \item Helped refugees, detained by border patrol, reconnect with their families and contact their domestic sponsors.
+        \item Facilitated safe travel to host cities and attendance of mandated court appearances for 2,000+ refugees.
     \end{enumerate}
 }
+
+\subsection{Volunteer} \hfill \textbf{Casa Tochan} \hfill \textbf{Jan 2022---Mar 2022}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Aided migrants in finding jobs, renting apartments, and petitioning the government for asylum, residency, citizenship, driver’s licenses, working permits, and vaccinations.
+    \end{enumerate}
+}
+
+\subsection{Volunteer} \hfill \textbf{Tree of Hopes} \hfill \textbf{Oct 2021---Nov 2021}
+\subsubsectiontext{
+    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+        \item Coordinated with sponsors, lawyers, police, government officials, and doctors to provide residents with the requisite support and safeguard their civil and informational rights.
+    \end{enumerate}
+}
+
+
+
+
+
+
+
+
+%% PUBLICATIONS
+\nobibliography{ref}
+\bibliographystyle{unsrt}
+
+\section{Publications}
+\begin{enumerate}
+    \item \bibentry{C9CP00837C}
+\end{enumerate}
 
 \end{document}
