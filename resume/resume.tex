@@ -11,12 +11,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage{titlesec}
 \usepackage{titling}
-\usepackage[margin=.5in, top=.35in, bottom=.35in]{geometry}
+\usepackage[margin=.5in, top=.25in, bottom=.25in]{geometry}
 
 % large comments
 \usepackage{comment}
 
-% customizable enumerate
+% customizable itemize
 \usepackage{enumitem}
 
 % icons
@@ -27,12 +27,7 @@
 
 % hyperlinks
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
+
 
 
 
@@ -90,14 +85,23 @@
 % title
 \renewcommand{\maketitle}{
 \begin{center}
-{\Huge\bfseries\theauthor}
-\vspace{1em}  
+{\huge\bfseries\theauthor}
+\vspace{.25em}
+
 
 \faIcon{envelope}\hspace{} aidencullo@gmail.com\dividor 
-\faIcon{globe}\hspace{} aidencullo.com\dividor 
-\faIcon{github}\hspace{} aidencullo\dividor
-\faIcon{linkedin}\hspace{} aidencullo\dividor
+\href{https://aidencullo.com}{
+    \faIcon{globe}\hspace{} aidencullo.com
+}\dividor 
+\href{https://github.com/aidencullo}{
+    \faIcon{github}\hspace{} aidencullo
+}\dividor
+\href{https://linkedin.com/in/aidencullo}{
+    \faIcon{linkedin}\hspace{} aidencullo
+}\dividor
 \mobile\hspace{} 845-320-0566
+\vspace{-.5em}
+
 
 \end{center}
 }
@@ -161,7 +165,7 @@
 \section{education}
 
 \subsection{SUNY Binghamton} \hfill \textbf{Class of 2020}\\
-\textbf{B.S. Math} $\vert$ \textbf{B.S. Physics} $\vert$ \textbf{B.S. Computer Science} | GPA: 3.85/4\hfill Binghamton, NY\\
+\textbf{B.S. Computer Science} $\vert$ \textbf{B.S. Mathematics} $\vert$ \textbf{B.S. Physics} | GPA: 3.85/4\hfill Binghamton, NY\\
 Honors: \textit{summa cum laude}, Upsilon Pi Epsilon
 
 
@@ -169,80 +173,14 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon
 
 
 
+%% PUBLICATIONS
+\nobibliography{ref}
+\bibliographystyle{unsrt}
 
-%% EXPERIENCE
-
-\section{experience}
-
-\subsection{Software Developer} \hfill \textbf{Herogrow} \hfill \textbf{Apr 2023---Present}
-\subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-      \item Designed \textbf{RESTful API} infrastructure for internal/external server endpoints with \textbf{Ruby on Rails}.
-      \item Optimized web controller content delivery 4-fold by integrating turbo frames into resource pipeline.
-      \item Reduced database query time 25\% by refactoring \textbf{PostgreSQL} schema to streamline common actions. 
-    \end{enumerate}
-}
-
-\subsection{Software Developer} \hfill \textbf{Tradigro} \hfill \textbf{Dec 2022---Apr 2023}
-\subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Modularized \textbf{Vue.js} sharing UI for journals, trades, and achievements, reducing duplicate feed traffic by 70\%.
-        \item Standardized social media post view across platforms, eliminating \(\sim \)5 incorrect media conversions per profile.
-        \item Devised asynchronous locking algorithm for \textbf{Node.js} server to avoid a race condition on 1k batch trade uploads.
-    \end{enumerate}
-}
-
-\subsection{Software Developer} \hfill \textbf{SuperCerebro} \hfill \textbf{Aug 2022---Dec 2022}
-\subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Developed a puzzle strategy game for a 10,000-person customer base across Latin America and Europe.
-        \item Constructed a multi-platform progressive web app via the \textbf{Ionic} SDK and \textbf{React} framework.
-        \item Implemented DBMS with \textbf{Google Firebase} to store 1TB of credentials, preferences, and history user data.
-    \end{enumerate}
-}
-
-
-\subsection{Research Assistant} \hfill \textbf{SUNY Binghamton} \hfill \textbf{Aug 2018---Nov 2020}
-\subsubsectiontext{
-\begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-    \item Tuned evolutionary search algorithm for nanocrystal alloy structures in \textbf{C} to consistently obtain stabler ground states. 
-    \item Achieved 50\% speed-up of open-source \href{https://maise.binghamton.edu/}{\textbf{MAISE}} neural network library via parallelization with \textbf{openMP} toolkit.
+\section{Publications}
+\begin{enumerate}
+    \item \href{https://pubs.rsc.org/en/content/articlelanding/2019/cp/c9cp00837c}{\bibentry{C9CP00837C}}
 \end{enumerate}
-}
-
-
-\subsection{Research Fellow} \hfill \textbf{California Institute of Technology (Caltech)} \hfill \textbf{Jun 2019---Aug 2019}
-\subsubsectiontext{
-\begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-    \item Performed scanning tunneling microscopy (STM) of topological defects in semiconductor surface states.
-    \item  Cross-examined results of pure and Cr-doped $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulator substrates.
-\end{enumerate}
-}
-
-
-\subsection{Research Intern} \hfill \textbf{Sapienza University of Rome} \hfill \textbf{Jun 2018---Aug 2018}
-\subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Constructed a multi-layer convolutional neural network in \textbf{Python} to classify particle collisions with 97.5\% accuracy.
-        \item Generated 20k training samples based on weakly interacting massive particle (WIMP) theoretical models.
-    \end{enumerate}
-}
-
-
-
-\subsection{Software Intern} \hfill \textbf{National Aeronautics and Space Administration (NASA)} \hfill \textbf{Jun 2017---Aug 2017}
-\subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
-        \item Built a library in \textbf{\Cplusplus} and \textbf{MATLAB} to interpret biases and correlations in 1000+ battery metadata indicators.
-        \item Incorporated uncertainty and loss information into mission-critical decisions for autonomous drone fleets of 100+.
-    \end{enumerate}
-}
-
-
-
-
-
-
 
 
 
@@ -260,8 +198,102 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon
 \noindent
 \textbf{Programming Languages:} Python, JavaScript, TypeScript, \Cplusplus, C, Java, Ruby, SQL, PHP \\
 \textbf{Frameworks:} React, Vue.js, Angular, Node.js, Ruby on Rails, MongoDB, GCP \\
-\textbf{Tools:} macOS, Windows, Linux/Unix, Docker, Git, Emacs, VS Code, IntelliJ, NumPy, PyTorch \\
+\textbf{Tools:} macOS, Windows, Linux, Agile, CI/CD, Docker, Git, Emacs, VS Code, NumPy, PyTorch, pandas, pytest \\
 \textbf{Spoken Languages:} English (\textit{native}), Spanish (\textit{fluent}), French (\textit{prof.}), Portuguese (\textit{elem.})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%% EXPERIENCE
+
+\section{experience}
+
+\subsection{Software Developer} \hfill \textbf{Herogrow} \hfill \textbf{Apr 2023---Present}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+      \item Designed \textbf{RESTful API} infrastructure for internal/external server endpoints with \textbf{Ruby on Rails}.
+      \item Optimized web controller content delivery 4-fold by integrating turbo frames into resource pipeline.
+      \item Reduced database query time 25\% by refactoring \textbf{PostgreSQL} schema to streamline common actions. 
+    \end{itemize}
+}
+
+\subsection{Software Developer} \hfill \textbf{Tradigro} \hfill \textbf{Dec 2022---Apr 2023}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+        \item Modularized \textbf{Vue.js} sharing UI for journals, trades, and achievements, reducing duplicate feed traffic by 70\%.
+        \item Standardized social media post view across platforms, eliminating 5 incorrect media conversions per profile.
+        \item Devised asynchronous locking algorithm for \textbf{Node.js} server to avoid a race condition on 1k batch trade uploads.
+    \end{itemize}
+}
+
+\subsection{Software Developer} \hfill \textbf{SuperCerebro} \hfill \textbf{Aug 2022---Dec 2022}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+        \item Developed a puzzle strategy game for a 10,000-person customer base across Latin America and Europe.
+        \item Constructed a multi-platform progressive web app via the \textbf{Ionic} SDK and \textbf{React} framework.
+        \item Implemented DBMS with \textbf{Google Firebase} to store 1TB of credentials, preferences, and history user data.
+    \end{itemize}
+}
+
+
+\subsection{Research Assistant} \hfill \textbf{SUNY Binghamton} \hfill \textbf{Aug 2018---Nov 2020}
+\subsubsectiontext{
+\begin{itemize}[leftmargin=0cm,nosep] 
+    \item Tuned evolutionary search algorithm for nanocrystal alloy structures in \textbf{C} to consistently obtain stabler ground states. 
+    \item Achieved 50\% speed-up of open-source \href{https://maise.binghamton.edu/}{\textbf{MAISE}} neural network library via parallelization with \textbf{openMP} toolkit.
+\end{itemize}
+}
+
+
+\subsection{Research Fellow} \hfill \textbf{California Institute of Technology (Caltech)} \hfill \textbf{Jun 2019---Aug 2019}
+\subsubsectiontext{
+\begin{itemize}[leftmargin=0cm,nosep] 
+    \item Performed scanning tunneling microscopy (STM) of topological defects in semiconductor surface states.
+    \item  Cross-examined results of pure and Cr-doped $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulator substrates.
+\end{itemize}
+}
+
+
+\subsection{Research Intern} \hfill \textbf{Sapienza University of Rome} \hfill \textbf{Jun 2018---Aug 2018}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+        \item Constructed a multi-layer convolutional neural network in \textbf{Python} to classify particle collisions with 97.5\% accuracy.
+        \item Generated 20k training samples based on weakly interacting massive particle (WIMP) theoretical models.
+    \end{itemize}
+}
+
+
+
+\subsection{Software Intern} \hfill \textbf{National Aeronautics and Space Administration (NASA)} \hfill \textbf{Jun 2017---Aug 2017}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+        \item Built a library in \textbf{\Cplusplus} and \textbf{MATLAB} to interpret biases and correlations in 1000+ battery metadata indicators.
+        \item Incorporated uncertainty and loss information into mission-critical decisions for autonomous drone fleets of 100+.
+    \end{itemize}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,40 +306,35 @@ Honors: \textit{summa cum laude}, Upsilon Pi Epsilon
 
 \subsection{Coordinator} \hfill \textbf{Annunciation House} \hfill \textbf{Mar 2022---Jun 2022}
 \subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+    \begin{itemize}[leftmargin=0cm,nosep] 
         \item Helped refugees, detained by border patrol, reconnect with their families and contact their domestic sponsors.
         \item Facilitated safe travel to host cities and attendance of mandated court appearances for 2,000+ refugees.
-    \end{enumerate}
+    \end{itemize}
 }
 
 \subsection{Liaison} \hfill \textbf{Casa Tochan} \hfill \textbf{Jan 2022---Mar 2022}
 \subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+    \begin{itemize}[leftmargin=0cm,nosep] 
         \item Aided migrants in finding jobs, renting apartments, and petitioning the government for asylum, residency, citizenship, driver’s licenses, working permits, and vaccinations.
-    \end{enumerate}
+    \end{itemize}
 }
 
 \subsection{Secretary} \hfill \textbf{Tree of Hopes} \hfill \textbf{Oct 2021---Nov 2021}
 \subsubsectiontext{
-    \begin{enumerate}[leftmargin=0cm,nosep,label={\circ}] 
+    \begin{itemize}[leftmargin=0cm,nosep] 
         \item Coordinated with sponsors, lawyers, police, government officials, and doctors to provide residents with the requisite support and safeguard their civil and informational rights.
-    \end{enumerate}
+    \end{itemize}
+}
+
+\subsection{Teacher} \hfill \textbf{Parchando Ando} \hfill \textbf{Nov 2022---Mar 2023}
+\subsubsectiontext{
+    \begin{itemize}[leftmargin=0cm,nosep] 
+        \item Created and instructed a 12-week comprehensive English course for 30+ students of all ages and levels of education.
+    \end{itemize}
 }
 
 
 
 
-
-
-
-
-%% PUBLICATIONS
-\nobibliography{ref}
-\bibliographystyle{unsrt}
-
-\section{Publications}
-\begin{enumerate}
-    \item \bibentry{C9CP00837C}
-\end{enumerate}
 
 \end{document}
