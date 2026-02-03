@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Pre-commit hook to compile resume.tex to PDF
+
+# Check if latexmk or xelatex is available
+if command -v latexmk &> /dev/null; then
+    echo "Compiling resume.tex to PDF..."
+    latexmk -xelatex -quiet resume.tex
+elif command -v xelatex &> /dev/null; then
+    echo "Compiling resume.tex to PDF..."
+    xelatex -interaction=nonstopmode resume.tex
+else
+    echo "Warning: LaTeX not found. Skipping PDF compilation."
+    echo "Install a LaTeX distribution to enable local PDF builds."
+    exit 0
+fi
+
+# Check if PDF was generated successfully
+if [ -f resume.pdf ]; then
+    echo "PDF compiled successfully."
+    git add resume.pdf
+else
+    echo "Warning: PDF compilation failed."
+fi
