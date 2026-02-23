@@ -1,0 +1,90 @@
+name: Deploy Resume to Pages (Manual)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: resume.pdf
+
+  build-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc and LibreOffice
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc libreoffice-writer
+
+      - name: Convert LaTeX to DOCX
+        run: pandoc resume.tex -o resume.docx
+
+      - name: Convert DOCX to DOC
+        run: libreoffice --headless --convert-to doc:"MS Word 97" --outdir . resume.docx
+
+      - name: Upload DOC artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-doc
+          path: resume.doc
+
+  deploy-pages:
+    needs: [build-pdf, build-doc]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-pdf
+
+      - name: Download DOC artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-doc
+
+      - name: Prepare Pages content
+        run: |
+          mkdir -p site
+          cp resume.pdf site/resume.pdf
+          cp resume.doc site/resume.doc
+          if [ -f README.md ]; then
+            cp README.md site/index.md
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
