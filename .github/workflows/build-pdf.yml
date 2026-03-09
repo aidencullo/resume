@@ -4,12 +4,13 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    types: [opened, synchronize, reopened, closed]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,23 +21,26 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: true
 
-      - name: Upload PDF artifact
+      - name: Prepare site
+        run: mkdir site && cp resume.pdf site/ && cp index.html site/
+
+      - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
-          name: resume
-          path: resume.pdf
+          name: site
+          path: site
 
   release:
     needs: build
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Download PDF artifact
+      - name: Download site artifact
         uses: actions/download-artifact@v4
         with:
-          name: resume
+          name: site
 
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
@@ -45,3 +49,69 @@ jobs:
           name: Latest Resume
           files: resume.pdf
           make_latest: true
+
+  deploy-main:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          keep_files: true
+
+  deploy-preview:
+    needs: build
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
+      - name: Deploy PR preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: deploy
+
+  cleanup-preview:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Remove PR preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: remove

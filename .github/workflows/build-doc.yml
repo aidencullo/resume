@@ -50,3 +50,4 @@ jobs:
           name: Latest Resume
           files: resume.doc
           make_latest: true
+
