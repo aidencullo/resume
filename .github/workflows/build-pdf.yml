@@ -22,7 +22,7 @@ jobs:
           latexmk_use_xelatex: true
 
       - name: Prepare site
-        run: mkdir site && cp resume.pdf site/ && cp index.html site/
+        run: mkdir site && cp resume.pdf site/
 
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
@@ -95,7 +95,7 @@ jobs:
         with:
           source-dir: site
           preview-branch: gh-pages
-          umbrella-dir: pr-preview
+          umbrella-dir: .
           action: deploy
 
   cleanup-preview:
@@ -113,5 +113,5 @@ jobs:
         with:
           source-dir: site
           preview-branch: gh-pages
-          umbrella-dir: pr-preview
+          umbrella-dir: .
           action: remove
