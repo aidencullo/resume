@@ -1,114 +1,69 @@
 name: Deploy Resume to Pages
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy (dev or prod)'
-        required: true
-        default: 'dev'
-        type: choice
-        options:
-          - dev
-          - prod
   push:
     branches:
       - dev
       - prod
 
 jobs:
-  build-pdf:
+  build-prod:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
+          ref: prod
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+      - uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
           latexmk_use_xelatex: true
 
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: resume-pdf
+          name: resume-prod
           path: resume.pdf
 
-  build-doc:
+  build-dev:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
+          ref: dev
 
-      - name: Install Pandoc and LibreOffice
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc libreoffice-writer
-
-      - name: Convert LaTeX to DOCX
-        run: pandoc resume.tex -o resume.docx
-
-      - name: Convert DOCX to DOC
-        run: libreoffice --headless --convert-to doc:"MS Word 97" --outdir . resume.docx
-
-      - name: Upload DOC artifact
-        uses: actions/upload-artifact@v4
+      - uses: xu-cheng/latex-action@v3
         with:
-          name: resume-doc
-          path: resume.doc
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resume-dev
+          path: resume.pdf
 
   deploy-pages:
-    needs: [build-pdf, build-doc]
+    needs: [build-prod, build-dev]
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
-
-      - name: Download PDF artifact
+      - name: Download prod PDF
         uses: actions/download-artifact@v4
         with:
-          name: resume-pdf
+          name: resume-prod
+          path: site
 
-      - name: Download DOC artifact
+      - name: Download dev PDF
         uses: actions/download-artifact@v4
         with:
-          name: resume-doc
+          name: resume-dev
+          path: site/dev
 
-      - name: Prepare Pages content
-        run: |
-          mkdir -p site
-          # Preserve existing files from the live site
-          curl -fsSL https://aidencullo.github.io/resume/resume.pdf -o site/resume.pdf || true
-          curl -fsSL https://aidencullo.github.io/resume/resume.doc -o site/resume.doc || true
-          curl -fsSL https://aidencullo.github.io/resume/resume-dev.pdf -o site/resume-dev.pdf || true
-          curl -fsSL https://aidencullo.github.io/resume/resume-dev.doc -o site/resume-dev.doc || true
-          # Override with current build
-          if [ "${{ github.ref_name }}" = "prod" ]; then
-            cp resume.pdf site/resume.pdf
-            cp resume.doc site/resume.doc
-          else
-            cp resume.pdf site/resume-dev.pdf
-            cp resume.doc site/resume-dev.doc
-          fi
+      - uses: actions/configure-pages@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload to Pages
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
-      - name: Deploy to Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
