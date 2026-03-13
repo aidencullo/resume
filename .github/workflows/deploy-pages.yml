@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch || 'dev' }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -42,7 +42,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch || 'dev' }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Install Pandoc and LibreOffice
         run: |
@@ -74,7 +74,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch || 'dev' }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Download PDF artifact
         uses: actions/download-artifact@v4
@@ -89,8 +89,7 @@ jobs:
       - name: Prepare Pages content
         run: |
           mkdir -p site
-          BRANCH=${{ github.event.inputs.branch || (github.ref == 'refs/heads/dev' && 'dev' || 'prod') }}
-          if [ "$BRANCH" = "prod" ]; then
+          if [ "${{ github.ref }}" = "refs/heads/prod" ]; then
             cp resume.pdf site/resume.pdf
             cp resume.doc site/resume.doc
           else
