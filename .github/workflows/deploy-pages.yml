@@ -1,7 +1,20 @@
-name: Deploy Resume to Pages (Manual)
+name: Deploy Resume to Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy (dev or prod)'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - prod
+  push:
+    branches:
+      - dev
+      - prod
 
 jobs:
   build-pdf:
@@ -9,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -27,6 +42,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Install Pandoc and LibreOffice
         run: |
@@ -51,12 +68,11 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
 
       - name: Download PDF artifact
         uses: actions/download-artifact@v4
@@ -71,10 +87,13 @@ jobs:
       - name: Prepare Pages content
         run: |
           mkdir -p site
-          cp resume.pdf site/resume.pdf
-          cp resume.doc site/resume.doc
-          if [ -f README.md ]; then
-            cp README.md site/index.md
+          if [ "${{ github.ref }}" = "refs/heads/prod" ]; then
+            cp resume.pdf site/resume.pdf
+            cp resume.doc site/resume.doc
+          else
+            mkdir -p site/dev
+            cp resume.pdf site/dev/resume.pdf
+            cp resume.doc site/dev/resume.doc
           fi
 
       - name: Setup Pages
