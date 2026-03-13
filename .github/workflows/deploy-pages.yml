@@ -64,6 +64,7 @@ jobs:
 
   deploy-pages:
     needs: [build-pdf, build-doc]
+    if: github.ref == 'refs/heads/prod' || (github.event_name == 'workflow_dispatch' && inputs.branch == 'prod')
     runs-on: ubuntu-latest
     permissions:
       pages: write
