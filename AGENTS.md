@@ -2,25 +2,28 @@
 
 ## Branches
 - `dev` - working branch for edits
-- `prod` - production branch, deployed to GitHub Pages
+- `prod` - production branch, merged manually via PR from dev
 
 ## Branch Protection (prod)
-- Requires 1 approving review
+- Requires PR (no direct pushes)
+- 0 required approving reviews (self-merge allowed)
 - No force pushes
-- No direct pushes - must use PR
-- Admin enforcement enabled
-
-**IMPORTANT:** Once admin enforcement is enabled, even repo admins cannot bypass. To make rules unchangeable, transfer repo to an organization.
 
 ## Workflow
 1. Edit on `dev` branch
-2. Push changes to `dev` - auto-deploys to https://aidencullo.github.io/resume/resume-dev.pdf
-3. Create PR from `dev` → `prod`
-4. Review and merge PR - auto-deploys to https://aidencullo.github.io/resume/resume.pdf
+2. Push changes to `dev` — triggers a build of both dev and prod PDFs, deploys both to GitHub Pages
+3. Preview changes at https://aidencullo.github.io/resume/dev/resume.pdf
+4. When ready, create a PR from `dev` → `prod` and merge via GitHub UI
+5. Merging to `prod` triggers another deploy, updating the prod PDF
 
 ## GitHub Pages URLs
-- dev: https://aidencullo.github.io/resume/resume-dev.pdf
 - prod: https://aidencullo.github.io/resume/resume.pdf
+- dev: https://aidencullo.github.io/resume/dev/resume.pdf
 
-## Local Pre-push Hook
-Located at `.git/hooks/pre-push` - blocks pushing directly to prod locally.
+## Deployment (`.github/workflows/deploy-pages.yml`)
+Every push to `dev` or `prod` triggers the workflow, which:
+1. Builds a PDF from the `prod` branch
+2. Builds a PDF from the `dev` branch
+3. Deploys both together — prod PDF at root, dev PDF at `/dev/`
+
+This avoids the overwrite problem where a dev push would wipe the prod deployment.
