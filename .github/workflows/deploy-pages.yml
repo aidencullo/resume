@@ -64,7 +64,6 @@ jobs:
 
   deploy-pages:
     needs: [build-pdf, build-doc]
-    if: github.ref == 'refs/heads/prod' || (github.event_name == 'workflow_dispatch' && inputs.branch == 'prod')
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -88,7 +87,13 @@ jobs:
       - name: Prepare Pages content
         run: |
           mkdir -p site
-          if [ "${{ github.ref }}" = "refs/heads/prod" ]; then
+          # Preserve existing files from the live site
+          curl -fsSL https://aidencullo.github.io/resume/resume.pdf -o site/resume.pdf || true
+          curl -fsSL https://aidencullo.github.io/resume/resume.doc -o site/resume.doc || true
+          curl -fsSL https://aidencullo.github.io/resume/resume-dev.pdf -o site/resume-dev.pdf || true
+          curl -fsSL https://aidencullo.github.io/resume/resume-dev.doc -o site/resume-dev.doc || true
+          # Override with current build
+          if [ "${{ github.ref_name }}" = "prod" ]; then
             cp resume.pdf site/resume.pdf
             cp resume.doc site/resume.doc
           else
