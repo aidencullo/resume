@@ -64,6 +64,7 @@ jobs:
 
   deploy-pages:
     needs: [build-pdf, build-doc]
+    if: github.ref == 'refs/heads/prod' || (github.event_name == 'workflow_dispatch' && inputs.branch == 'prod')
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -91,9 +92,8 @@ jobs:
             cp resume.pdf site/resume.pdf
             cp resume.doc site/resume.doc
           else
-            mkdir -p site/dev
-            cp resume.pdf site/dev/resume.pdf
-            cp resume.doc site/dev/resume.doc
+            cp resume.pdf site/resume-dev.pdf
+            cp resume.doc site/resume-dev.doc
           fi
 
       - name: Setup Pages
