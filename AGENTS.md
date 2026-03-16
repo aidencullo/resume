@@ -6,7 +6,7 @@
 
 ## Branch Protection (prod)
 - Requires PR (no direct pushes)
-- 0 required approving reviews (self-merge allowed)
+- 1 required approving review (no CLI or self-merge)
 - No force pushes
 
 ## Workflow
