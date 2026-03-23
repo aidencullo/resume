@@ -1,35 +1,13 @@
 \documentclass{article}
 
-
-
-
-
-
-
-
 %% PACKAGES
 \usepackage{titlesec}
 \usepackage{titling}
 \usepackage[margin=.5in]{geometry}
-
-
-% customizable itemize
 \usepackage{enumitem}
-
-% icons
 \usepackage{fontawesome5}
-
-% hyperlinks
 \usepackage{hyperref}
-
-% math text
 \usepackage{amsmath}
-
-
-
-
-
-
 
 %% NEW COMMANDS
 \newcommand{\dividor}{\hfill$\vert$\hfill}
@@ -40,9 +18,7 @@
     #1
     \end{minipage}%
 }
-
-
-
+\newcommand{\mobile}{\faIcon{mobile-alt}}
 
 %% SETTINGS AND SUBSTITUTIONS
 \titleformat{\section}
@@ -57,35 +33,20 @@
 {0em}
 {}
 
-
-
 % \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
 \titlespacing{\section}{0em}{1em}{0.5em}
 \titlespacing{\subsection}{0em}{.5em}{0.25em}
 
-% no page numbers
 \pagestyle{empty}
-
-% set left margin and separation of bullets
 \setlist[itemize]{leftmargin=0cm, nosep}
-
-
-
-
-
-
-
-
 
 %% RENEW COMMANDS
 \renewcommand{\familydefault}{\sfdefault}
 
-% title
 \renewcommand{\maketitle}{
 \begin{center}
 {\Huge\bfseries\theauthor}
 \vspace{1em}
-
 
 \faIcon{envelope}~aidencullo@gmail.com
 \dividor
@@ -105,64 +66,18 @@
 \dividor
 \faIcon{map-marker}~New York, NY
 
-
 \end{center}
 }
 
-
-
-
-
-
-
-% TITLE
 \author{Aiden Cullo}
-
-
-
-
-
-
-
-
-%% DEFINITIONS
-\newcommand{\mobile}{\faIcon{mobile-alt}}
-
-
-
-
-
 
 % DOCUMENT
 \begin{document}
 
-
-
-
-
-
-
 %% HEADER
 \maketitle
 
-
-
-
-
-
-
-
-
-
-
 \newcommand{\customsubheader}[3]{\textbf{#2}\workdividor#1 \hfill \textbf{#3}}
-
-
-
-
-
-
-
 
 %%  experience
 \section{experience}
@@ -177,11 +92,9 @@
     \end{itemize}
 }
 
-
-
 \subsection{\customsubheader{Software Engineer II}{JPMorgan Chase}{Sep 2024---Mar 2025}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
       \item Built a dashboard capable of visualizing 1k+ \textbf{LLMs}, allowing data scientists to monitor \textbf{ML} workflows.
       \item Augmented \textbf{FastAPI} logs with user IDs across all endpoints, ensuring traceability of 1M+ daily events.
       \item Validated client identities accessing \textbf{LLM} artifact registry, enhancing security and guaranteeing government compliance.
@@ -191,18 +104,17 @@
 
 \subsection{\customsubheader{Software Engineer I}{HeroGrow}{Apr 2023---Sep 2024}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
       \item Developed a \textbf{Ruby on Rails} REST API to manage venue seating layouts, allowing real-time ticket reservations.
       \item Integrated \textbf{JavaScript} Turbo Frames into the browser UI, allowing partial page updates, reducing load times by 50\%.
       \item Implemented OAuth2-based authentication, streamlining sign-in processes and increasing user registrations.
-       \item Integrated Square payments API into the customer checkout form, allowing customers to pay quickly and efficiently.
-
+      \item Integrated Square payments API into the customer checkout form, allowing customers to pay quickly and efficiently.
     \end{itemize}
 }
 
 \subsection{\customsubheader{Software Engineer I}{Tradigro}{Dec 2022---Apr 2023}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
         \item Indexed \textbf{Vue.js} journals, trades, and achievements views, allowing more granular and searchable public content.
         \item Decoupled raw trade and statistical analysis modules, reducing duplicate feed publications upon user profile updates.
         \item Standardized text encoding format in \textbf{Vuex} frontend data store, eliminating incorrect comment representations.
@@ -212,7 +124,7 @@
 
 \subsection{\customsubheader{Junior Software Engineer}{SuperCerebros}{May 2021---Dec 2022}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
         \item Built a progressive web application in \textbf{React}, deployed to 10k+ domestic and international users.
         \item Integrated mobile and desktop applications via Ionic SDK and \textbf{TypeScript}, cutting total server requests in half.
         \item Architected DBMS with \textbf{Google Firebase}, storing 1TB of user data while maintaining ms latency.
@@ -221,7 +133,7 @@
 
 \subsection{\customsubheader{Research Assistant}{SUNY Binghamton}{Aug 2018---Nov 2020}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
     \item Tuned evolutionary search algorithm for nanocrystal structures in \textbf{C} to obtain stabler ground states 90\% of the time.
     \item Achieved 50\% speedup of the open source \href{https://maise.binghamton.edu/}{\textbf{MAISE}} library via parallelization with \textbf{OpenMP} toolkit.
     \item Automated neural network training with \textbf{Bash} scripts, reducing the iteration cycle from 100 to 20 hours.
@@ -230,132 +142,50 @@
 
 \subsection{\customsubheader{Physics Fellow}{Caltech}{Jun 2019---Aug 2019}}
 \subsubsectiontext{
-\begin{itemize} 
+\begin{itemize}
     \item Performed scanning tunneling microscopy of topological defects in $(\text{BiSb})_{2}\text{Te}_{3}$-bi-layer topological insulator substrates.
 \end{itemize}
 }
 
 \subsection{\customsubheader{Software Engineer Intern}{Sapienza University of Rome}{Jun 2018---Aug 2018}}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
         \item Built a multi-layer convolutional neural network in \textbf{Python}, classifying particle collisions with 99.5\% accuracy.
         \item Generated 20k training samples based on weakly interacting massive particle (WIMP) theoretical models.
     \end{itemize}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %% PROJECTS
-
 \section{Projects}
 
-\subsection{\customsubheader{Contributor}{pipenv}{Dec 2023---Feb 2024}}
+\subsection{\customsubheader{Contributor}{\href{https://github.com/pypa/pipenv}{pipenv}}{Dec 2023---Feb 2024}}
 \subsubsectiontext{
-\begin{itemize} 
+\begin{itemize}
     \item Migrated Click library to Rich and argparse tooling, reducing the package size by 1MB and cutting vendor dependencies.
 \end{itemize}
 }
-
-
-
-
-
 
 %% SKILLS
 \section{skills}
 
 \noindent\begin{tabular}{@{}p{0.25\textwidth}p{0.75\textwidth}@{}}
-\textbf{Programming Languages:} & Python, JavaScript, TypeScript, C++, C, Java, Ruby, SQL, Go, Haskell, PHP, Rust \\
-\textbf{Web:} & React, Vue.js, Angular, Node.js, Ruby on Rails, FastAPI, Flask, Django, Next.js, Express, Dart \\
-\textbf{Databases:} & PostgreSQL, MySQL, SQLite, Firebase, Redis, Cassandra, Oracle, DynamoDB, MongoDB \\
-\textbf{Tools:} & Git, Docker, Kubernetes, Jenkins, Apache, Nginx, AWS, Azure, GCP, Heroku, Netlify, Vercel \\
+\textbf{Programming Languages:} & Python, JavaScript, TypeScript, C, C++, Ruby, SQL, Go, Rust \\
+\textbf{Web:} & React, Vue.js, Node.js, Ruby on Rails, FastAPI, Flask, Django, Next.js \\
+\textbf{Databases:} & PostgreSQL, MySQL, SQLite, Firebase, Redis, DynamoDB, MongoDB \\
+\textbf{Tools:} & Git, Docker, Kubernetes, Terraform, Jenkins, AWS, GCP, Nginx \\
 \textbf{Spoken Languages:} & English (\textit{native}), Spanish (\textit{fluent}), French (\textit{proficient}), Portuguese (\textit{basic}), Mandarin (\textit{basic})
 \end{tabular}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %% EDUCATION
-
 \section{education}
 
 \noindent \textbf{SUNY Binghamton} \hfill \textbf{Class of 2020}
 \subsubsectiontext{
-    \begin{itemize} 
+    \begin{itemize}
         \item BS Computer Science, \textit{Watson School of Engineering}
         \item BS Mathematics, \textit{Harpur College of Arts and Sciences}
         \item BS Applied Physics, \textit{Harpur College of Arts and Sciences}
     \end{itemize}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{document}
-test
