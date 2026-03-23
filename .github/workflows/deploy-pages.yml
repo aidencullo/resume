@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - staging
       - prod
 
 jobs:
@@ -24,6 +25,23 @@ jobs:
           name: resume-prod
           path: resume.pdf
 
+  build-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resume-staging
+          path: resume.pdf
+
   build-dev:
     runs-on: ubuntu-latest
     steps:
@@ -42,7 +60,7 @@ jobs:
           path: resume.pdf
 
   deploy-pages:
-    needs: [build-prod, build-dev]
+    needs: [build-prod, build-staging, build-dev]
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -53,6 +71,12 @@ jobs:
         with:
           name: resume-prod
           path: site
+
+      - name: Download staging PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-staging
+          path: site/staging
 
       - name: Download dev PDF
         uses: actions/download-artifact@v4
